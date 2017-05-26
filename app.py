@@ -62,6 +62,7 @@ class PostAdmin(sqla.ModelView):
     column_choices = {
         'status': STATUS_MAPPER,
     }
+    column_default_sort = ('id', True)
 
 
 class SuperPostAdmin(PostAdmin):
