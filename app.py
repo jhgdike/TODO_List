@@ -1,8 +1,9 @@
+# coding: utf-8
 import os
 import os.path as op
+
 from flask import Flask, redirect
 from flask_sqlalchemy import SQLAlchemy
-
 from flask_admin import Admin
 from flask_admin.actions import action
 from flask_admin.contrib import sqla
@@ -22,7 +23,7 @@ db = SQLAlchemy(app)
 
 STATUS_MAPPER = [
     (0, 'todo'),
-    (1, '完成'),
+    (1, u'完成'),
 ]
 
 
