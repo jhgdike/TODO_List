@@ -29,8 +29,8 @@ STATUS_MAPPER = [
 class JobList(db.Model):
     __tablename__ = 'job_list'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    title = db.Column(db.String(120))
-    text = db.Column(db.Text, nullable=False)
+    title = db.Column(db.String(120), nullable=False)
+    text = db.Column(db.Text, nullable=False, default='')
     status = db.Column(db.Integer, nullable=False, default='0')
 
     def __str__(self):
@@ -40,8 +40,8 @@ class JobList(db.Model):
 class TodoList(db.Model):
     __tablename__ = 'todo_list'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    title = db.Column(db.String(120))
-    text = db.Column(db.Text, nullable=False)
+    title = db.Column(db.String(120), nullable=False)
+    text = db.Column(db.Text, nullable=False, default='')
     status = db.Column(db.Integer, nullable=False, default='0')
 
     def __str__(self):
