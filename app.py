@@ -3,7 +3,7 @@ import os.path as op
 from flask import Flask, redirect
 from flask_sqlalchemy import SQLAlchemy
 
-import flask_admin as admin
+from flask_admin import Admin
 from flask_admin.actions import action
 from flask_admin.contrib import sqla
 
@@ -82,7 +82,7 @@ class SuperPostAdmin(PostAdmin):
 
 
 # Create admin
-admin = admin.Admin(app, name='job-list', template_mode='bootstrap3')
+admin = Admin(app, name='job-list', template_mode='bootstrap3')
 
 # Add views
 admin.add_view(SuperPostAdmin(JobList, db.session, name='工作任务表', endpoint='job_list'))
