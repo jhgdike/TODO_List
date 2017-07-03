@@ -23,7 +23,8 @@ db = SQLAlchemy(app)
 
 STATUS_MAPPER = [
     (0, 'todo'),
-    (1, u'完成'),
+    (1, u'已完成'),
+    (2, u'已取消'),
 ]
 
 
@@ -80,6 +81,13 @@ class SuperPostAdmin(PostAdmin):
         rs = self.model.query.filter(self.model.id.in_(map(int, ids))).all() 
         for x in rs:
             x.status = 1
+        db.session.commit()
+
+    @action('cancel', '取消')
+    def action_cancel(self, ids):
+        rs = self.model.query.filter(self.model.id.in_(map(int, ids))).all()
+        for x in rs:
+            x.status = 2
         db.session.commit()
 
 
