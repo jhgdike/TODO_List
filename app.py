@@ -103,7 +103,8 @@ admin.add_view(PostAdmin(JobList, db.session, name='工作任务表', category=c
 admin.add_view(PostAdmin(TodoList, db.session, name='个人计划表', category=category))
 
 if __name__ == '__main__':
-    db.create_all()
+    with app.test_request_context():
+        db.create_all()
     # Build a sample db on the fly, if one does not exist yet.
     app_dir = op.realpath(os.path.dirname(__file__))
     database_path = op.join(app_dir, app.config['DATABASE_FILE'])
